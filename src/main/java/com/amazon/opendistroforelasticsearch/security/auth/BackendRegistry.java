@@ -249,7 +249,7 @@ public class BackendRegistry {
         }
 
         if (!isInitialized()) {
-            log.error("Not yet initialized (you may need to run securityadmin)");
+            log.error("Not yet initialized (you may need to run securityadmin) TEST_ACTION: {}", action);
             return null;
         }
 
