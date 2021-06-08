@@ -219,7 +219,7 @@ public class InitializationIntegrationTests extends SingleClusterTest {
             long start = System.currentTimeMillis();
             Thread.sleep(10000);
             long end = System.currentTimeMillis();
-            log.warn("TIME TAKEN {}", end-start);           
+            log.warn("TEST TIME TAKEN {}", end-start);
             Assert.assertEquals(HttpStatus.SC_OK, rh.executeGetRequest("", encodeBasicHeader("admin", "admin")).getStatusCode());
         } finally {
             if (defaultInitDirectory != null) {
