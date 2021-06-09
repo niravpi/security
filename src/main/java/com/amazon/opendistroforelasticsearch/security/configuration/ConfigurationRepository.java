@@ -232,10 +232,6 @@ public class ConfigurationRepository {
 
         try {
 
-            if (clusterService.state().metaData().hasConcreteIndex(opendistrosecurityIndex)) {
-                LOGGER.info("{} index does already exist, so we try to load the config from it", opendistrosecurityIndex);
-                bgThread.start();
-            } else {
                 if (settings.getAsBoolean(ConfigConstants.OPENDISTRO_SECURITY_ALLOW_DEFAULT_INIT_SECURITYINDEX, false)) {
                     LOGGER.info("{} index does not exist yet, so we create a default config", opendistrosecurityIndex);
                     installDefaultConfig.set(true);
@@ -248,8 +244,6 @@ public class ConfigurationRepository {
                     LOGGER.info("{} index does not exist yet, use securityadmin to initialize the cluster. We will not perform background initialization",
                             opendistrosecurityIndex);
                 }
-            }
-
         } catch (Throwable e2) {
             LOGGER.error("Error during node initialization: {}", e2, e2);
             bgThread.start();
