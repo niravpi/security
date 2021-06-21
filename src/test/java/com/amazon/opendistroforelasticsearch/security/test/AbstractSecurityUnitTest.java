@@ -279,11 +279,8 @@ public abstract class AbstractSecurityUnitTest {
     protected NodeSettingsSupplier genericMinimumSecuritySettings(List<Settings> others, List<Boolean> sslOnly) {
 
         return i -> {
-            assert i > 0; // i is 1-indexed
-
-            // Set to default if input does not have value at (i-1) index
-            boolean sslOnlyFlag = i > sslOnly.size() ? false : sslOnly.get(i-1);
-            Settings settings = i > others.size() ? Settings.EMPTY : others.get(i-1);
+            boolean sslOnlyFlag = i > sslOnly.size() ? false : sslOnly.get(i);
+            Settings settings = i > others.size() ? Settings.EMPTY : others.get(i);
 
             return minimumSecuritySettingsBuilder(i, sslOnlyFlag, settings).build();
         };
